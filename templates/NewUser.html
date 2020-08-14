@@ -1,0 +1,117 @@
+<html>
+<head>
+<script language="javascript" type="text/javascript">
+function checkempty(){
+    var username = document.getElementById("username").value;
+    var userage = document.getElementById("userage").value;
+    var useremail = document.getElementById("useremail").value;
+    var userphone = document.getElementById("userphone").value;
+    var baemail = document.getElementById("baemail").value;
+    if(username==""){
+        alert("Please enter user's name");
+	document.getElementById("username").focus();
+        return false;
+    }
+    else if(userage==""){
+        alert("Please enter user's age");
+	document.getElementById("userage").focus();
+        return false;
+    }
+    else if(useremail==""){
+        alert("Please enter user's email");
+	document.getElementById("useremail").focus();
+        return false;
+    }
+    else if(userphone==""){
+        alert("Please enter user's phone");
+	document.getElementById("userphone").focus();
+        return false;
+    }
+    else if(baemail==""){
+        alert("Please enter BA's email");
+	document.getElementById("baemail").focus();
+        return false;
+    }
+    else{
+	return isEmail(useremail) && isEmail(baemail) && fucCheckTEL(userphone); //Check if all the info are in the correct form
+    }
+}
+
+function isEmail_showmsg(strEmail) {
+    if (strEmail.value.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/)!= -1){
+	if (strEmail.id == "useremail"){
+		document.getElementById("WarningMessage_useremail").innerHTML = "";
+	}
+	else{
+		document.getElementById("WarningMessage_baemail").innerHTML = "";
+	}	
+	return true;
+    }
+    else{
+	if (strEmail.id == "useremail"){
+		document.getElementById("WarningMessage_useremail").innerHTML = '<font color="red">'+"Please enter the correct email form"+'</font>';
+	}
+	else{
+		document.getElementById("WarningMessage_baemail").innerHTML = '<font color="red">'+"Please enter the correct email form"+'</font>';
+	}
+	return false;
+    }
+}
+
+function isEmail(strEmail) {
+    if (strEmail.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/)!= -1){
+	return true;
+    }
+    else{
+	return false;
+    }
+}
+
+function fucCheckTEL(TEL){
+	var i,j,strTemp;    
+	strTemp="0123456789-()# ";    
+	for (i=0;i<TEL.length;i++){    
+		j=strTemp.indexOf(TEL.charAt(i));    
+		if (j==-1){    
+			//there is at least one illegel element
+			document.getElementById("WarningMessage_userphone").innerHTML = '<font color="red">'+"Please enter the correct phone form"+'</font>';
+			return false;
+		}
+	}
+	document.getElementById("WarningMessage_userphone").innerHTML = "";
+	return true;    
+}
+
+function ValidateNumber(e, pnumber){
+        if (!/^\d+$/.test(pnumber)){
+            e.value = /^\d+/.exec(e.value);
+        }
+        return false;
+}
+</script>
+</head>
+<body>
+<form action="/popupshop/NewUser/Submit" method="post" onsubmit="return checkempty();">
+ <p>Name:
+ <input type="text" id="username" name="username" required="required", onkeyup="this.value = this.value.toLowerCase();" />
+ </p>
+ <p>Age:
+ <input type="text" id="userage"  name="userage" style="ime-mode:disabled" required="required" onkeyup="return ValidateNumber(this,value);" />
+ <p id="WarningMessage_userage"></p>
+ </p>
+ <p>Email:
+ <input type="text" id="useremail" name="useremail" required="required", onblur="isEmail_showmsg(this)", onkeyup="this.value = this.value.toLowerCase();" />
+ <p id="WarningMessage_useremail"></p>
+ </p>
+ <p>Phone:
+ <input type="text" id="userphone" name="userphone" required="required", onblur="fucCheckTEL(this.value)", onkeyup="this.value = this.value.toLowerCase();" />
+ <p id="WarningMessage_userphone"></p>
+ </p>
+ <p>BA Email:
+ <input type="text" id="baemail" name="baemail" required="required", onblur="isEmail_showmsg(this)", onkeyup="this.value = this.value.toLowerCase();" />
+ <p id="WarningMessage_baemail"></p>
+ <p></p>
+ <input type="submit" value="Submit">
+</form>
+</body>
+</html>

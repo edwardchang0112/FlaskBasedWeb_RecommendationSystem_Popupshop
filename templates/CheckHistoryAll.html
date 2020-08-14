@@ -1,0 +1,33 @@
+<h1>All History User Data</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>User Email</th>
+      <th>Phone</th>
+      <th>Time</th>
+      <th>Product</th>
+      <th>Average Hydration</th>
+      <th>Average Oxygen</th>
+      <th>Score</th>
+      <th>BA Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for history in recent_histories %}
+    <tr>
+      <td>{{ history.0 }}</td>
+      <td>{{ history.1 }}</td>
+      <td>{{ history.2 }}</td>
+      <td>{{ history.3 }}</td>
+      <td>{{ history.4 }}</td>
+      <td>{{ history.5 }}</td>
+      <td>{{ history.6 }}</td>
+      <td>{{ history.7 }}</td>
+      <td>{{ history.8 }}</td>
+      <td>{{ history.9 }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

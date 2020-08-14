@@ -1,0 +1,65 @@
+<html>
+<head>
+<script language="javascript" type="text/javascript">
+function checkempty(){
+    var useremail = document.getElementById("useremail").value;
+    var baemail = document.getElementById("baemail").value;
+    if(useremail==""){
+        alert("Please enter user's email");
+	document.getElementById("useremail").focus();
+        return false;
+        }
+    else if(baemail==""){
+        alert("Please enter BA's email");
+	document.getElementById("baemail").focus();
+        return false;
+        }
+    else{
+	return isEmail(useremail) && isEmail(baemail); //Check if the eamil is in the correct form
+	}
+}
+
+function isEmail_showmsg(strEmail) {
+    if (strEmail.value.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/)!= -1){
+	if (strEmail.id == "useremail"){
+		document.getElementById("WarningMessage1").innerHTML = "";
+	}
+	else{
+		document.getElementById("WarningMessage2").innerHTML = "";
+	}	
+	return true;
+	}
+    else{
+	if (strEmail.id == "useremail"){
+		document.getElementById("WarningMessage1").innerHTML = '<font color="red">'+"Please enter the correct email form"+'</font>';
+	}
+	else{
+		document.getElementById("WarningMessage2").innerHTML = '<font color="red">'+"Please enter the correct email form"+'</font>';
+	}
+	return false;
+	}
+}
+
+function isEmail(strEmail) {
+    if (strEmail.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/)!= -1)
+	return true;
+    else
+	return false;
+}
+</script>
+
+</head>
+<body>
+<form id="form1" name="form1" action="/popupshop/CheckHistory/CheckHistoryOne/Submit" method="post" onsubmit="return checkempty();">
+ <p>Email:
+ <input type="text" name="useremail" id="useremail" required="required", onblur="isEmail_showmsg(this)", onkeyup="this.value = this.value.toLowerCase();" />
+ <p id="WarningMessage1"></p>
+ </p>
+ <p>BA Email:
+ <input type="text" name="baemail" id="baemail" required="required", onblur="isEmail_showmsg(this)", onkeyup="this.value = this.value.toLowerCase();" />
+ <p id="WarningMessage2"></p>
+ </p>
+ <input type="submit" value="Submit">
+</form>
+</body>
+</html>
