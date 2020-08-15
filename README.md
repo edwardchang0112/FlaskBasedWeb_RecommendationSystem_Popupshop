@@ -11,6 +11,10 @@ This project show you how to build a flusk web, which involves pretained ML mode
 
 ![image](https://github.com/edwardchang0112/FluskBasedWeb_RecommendationSystem_Popupshop/blob/master/NewUserInputPage.png)
 
-3. Check History Page allow you to check all history data in database
+3. Check History Page allow you to check all history data of 1 user in database
 
 ![image](https://github.com/edwardchang0112/FluskBasedWeb_RecommendationSystem_Popupshop/blob/master/UserHistoryPage.png)
+
+4. Check History Page allow you to check all history data of all users in database
+
+![image](https://github.com/edwardchang0112/FluskBasedWeb_RecommendationSystem_Popupshop/blob/master/AllHistoryPage.png)
